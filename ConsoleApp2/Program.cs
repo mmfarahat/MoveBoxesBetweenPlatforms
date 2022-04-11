@@ -22,7 +22,10 @@ class Player
         //clean A
         while (boxesAStack.Count > 0)
         {
-
+            if (boxesAStack.Count == 1 && boxesAStack.Peek() == max)
+            {
+                break;
+            }
             moves.Add("A B");
             int popedItem = boxesAStack.Pop();
             boxesBStack.Push(popedItem);
@@ -91,11 +94,11 @@ class Player
         {
             max = boxesA.Max();
         }
-         if (boxesB.Any() && boxesB.Max() > max)
+        if (boxesB.Any() && boxesB.Max() > max)
         {
             max = boxesB.Max();
         }
-         if (boxesC.Any() && boxesC.Max() > max)
+        if (boxesC.Any() && boxesC.Max() > max)
         {
             max = boxesC.Max();
         }
@@ -135,9 +138,9 @@ class Player
         //}
         var stdtoutWriter = Console.Out;
         //Console.SetOut(Console.Error);
-        int[] boxesA = new int[7] {2,1,66,8,34,8,32};
-        int[] boxesB = new int[3] {87,100,150};
-        int[] boxesC = new int[5] {300,23,55,32,66};
+        int[] boxesA = new int[1] { 66 };
+        int[] boxesB = new int[1] { 20 };
+        int[] boxesC = new int[1] { 30 };
         string[] actions = Solve(boxesA, boxesB, boxesC);
         Console.SetOut(stdtoutWriter);
         for (int i = 0; i < actions.GetLength(0); i++)
